@@ -1,0 +1,97 @@
+:root {
+  --functionModePanel_nav_div: 50px;
+}
+.container_div {
+  position: fixed;
+  top: calc(var(--functionModePanel_nav_div) * -1);
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+}
+.nav_div {
+  width: 100%;
+  overflow: hidden;
+
+  height: var(--functionModePanel_nav_div);
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  background-color: var(--main-color);
+}
+.nav_div nav {
+  color: var(--background-color);
+}
+.arrow_div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 3px;
+  opacity: 0.8;
+  animation: floating 3s infinite;
+}
+.theme_div {
+  display: flex;
+  flex-direction: row;
+}
+.arrow_div svg {
+  margin-top: 3px;
+}
+.mode_navlink {
+  margin: 5px 20px 5px 20px;
+  text-decoration: none;
+}
+
+.container_div :nth-child(1) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.container_div :nth-child(2) {
+  grid-column: 3;
+  grid-row: 2;
+}
+.container_div :nth-child(3) {
+  grid-column: 5;
+  grid-row: 2;
+}
+
+.container_div:hover {
+  top: 0;
+  opacity: 1;
+  animation: dropdown 1s;
+}
+.container_div:hover .arrow_div {
+  animation: disappear 1.2s forwards;
+}
+
+@keyframes floating {
+  0% {
+    margin-top: 3px;
+  }
+  25% {
+    margin-top: 0px;
+  }
+  75% {
+    margin-top: 4px;
+  }
+  100% {
+    margin-top: 3px;
+  }
+}
+@keyframes dropdown {
+  from {
+    top: calc(var(--functionModePanel_nav_div) * -1);
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

@@ -1,13 +1,65 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+
+:root {
+  --temp-color0: rgb(37, 255, 4);
+
+  --font0-style: 12pt "Nunito Sans", sans-serif;
+
+  --main-color0: rgba(0, 0, 90, 1);
+  --main-color1: rgb(0, 0, 180);
+  --main-color2: rgb(255, 255, 255);
+
+  --background-color0: rgb(147, 147, 219);
+  --background-color1: rgb(255, 255, 255);
+
+  --shadow-color0: rgba(0, 0, 0, 0.3);
+
+  --fade-out-animation: 5s;
+  --switch-move-animation: 0.5s;
+  --label-move-animation: 5s;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  font: var(--font0-style);
 }
+button {
+  background-color: transparent;
+  border: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  min-height: 10px;
+  min-width: 10px;
+  box-shadow: 1px 1px 2px;
+}
+/* 
+h1 {
+  font-size: 60px;
+  white-space: nowrap;
+}
+h2 {
+  font-size: 18px;
+  white-space: nowrap;
+}
+h3 {
+  font-size: 16px;
+  white-space: nowrap;
+}
+h4 {
+  font-size: 12px;
+  white-space: nowrap;
+}
+h5 {
+  font-size: 10px;
+  white-space: nowrap;
+}
+h6 {
+  font-size: 6px;
+  white-space: nowrap;
+}
+div {
+  font-size: 18px;
+  color: aqua;
+} */

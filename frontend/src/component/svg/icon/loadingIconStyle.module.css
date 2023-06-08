@@ -1,0 +1,32 @@
+.circle0 {
+  animation: circle0 1s infinite;
+}
+.circle1 {
+  animation: circle1 1s infinite;
+}
+.circle2 {
+  animation: circle0 1s infinite;
+}
+
+@keyframes circle0 {
+  0% {
+    transform: translate(0px, 20px);
+  }
+  33% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(0px, 20px);
+  }
+}
+@keyframes circle1 {
+  0% {
+    transform: translate(0px, 20px);
+  }
+  66% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(0px, 20px);
+  }
+}

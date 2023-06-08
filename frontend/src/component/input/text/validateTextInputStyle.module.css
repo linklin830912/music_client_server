@@ -1,0 +1,91 @@
+:root {
+  --placeholder-top-animation: 25%;
+  --placeholder-top-focus-animation: -25%;
+  --placeholder-left-animation: 7%;
+  --placeholder-left-focus-animation: 6%;
+  --placeholder-scale-animation: scale(1);
+  --placeholder-scale-focus-animation: scale(0.95);
+}
+.container_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 55px;
+}
+.input_div {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -2px;
+}
+.error_div {
+  display: grid;
+  height: 50%;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  width: 100%;
+  background-color: transparent;
+  z-index: 2;
+}
+.error_div h6 {
+  grid-column: 1;
+  grid-row: 2;
+  text-align: end;
+  margin-right: 5px;
+}
+.error_div svg {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  width: 15px;
+  height: 15px;
+}
+
+.input_div .validate_label {
+  position: absolute;
+  top: var(--placeholder-top-animation);
+  left: var(--placeholder-left-animation);
+  transform: var(--placeholder-scale-animation);
+
+  z-index: 1;
+}
+
+.validate_input {
+  width: 90%;
+  height: 90%;
+  border-style: dashed;
+  border-radius: var(--solid-border-radius);
+  border-width: var(--solid-border-width);
+}
+.validate_label {
+  background-color: var(--background-color);
+}
+
+.validate_input:focus + .validate_label {
+  top: var(--placeholder-top-focus-animation);
+  left: var(--placeholder-left-focus-animation);
+  transform: var(--placeholder-scale-focus-animation);
+  animation: runaway 0.5s;
+}
+.validate_input:not(:placeholder-shown) + .validate_label {
+  top: var(--placeholder-top-focus-animation);
+  left: var(--placeholder-left-focus-animation);
+  transform: var(--placeholder-scale-focus-animation);
+}
+@keyframes runaway {
+  from {
+    top: var(--placeholder-top-animation);
+    left: var(--placeholder-left-animation);
+    transform: var(--placeholder-scale-animation);
+  }
+  to {
+    top: var(--placeholder-top-focus-animation);
+    left: var(--placeholder-left-focus-animation);
+    transform: var(--placeholder-scale-focus-animation);
+  }
+}

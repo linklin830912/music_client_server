@@ -1,0 +1,57 @@
+:root {
+  --switchButton_width: 50px;
+  --switchButton_height: 25px;
+}
+.container_div {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: var(--switchButton_width);
+  height: var(--switchButton_height);
+}
+.track_div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--switchButton_height) * 0.5);
+}
+.thumb_div {
+  position: absolute;
+  width: calc(var(--switchButton_height) * 0.85);
+  height: calc(var(--switchButton_height) * 0.85);
+  border-radius: 50%;
+}
+.container_div input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 2;
+}
+
+.container_div input ~ .thumb_div {
+  right: calc(var(--switchButton_width) * 0.55);
+  animation: switchLeft 1s forwards;
+}
+.container_div input:checked ~ .thumb_div {
+  right: calc(var(--switchButton_width) * 0.55);
+  animation: switchRight 1s forwards;
+}
+
+@keyframes switchLeft {
+  from {
+    right: calc(var(--switchButton_width) * 0.55);
+  }
+  to {
+    right: 1px;
+  }
+}
+
+@keyframes switchRight {
+  from {
+    right: 1px;
+  }
+  to {
+    right: calc(var(--switchButton_width) * 0.55);
+  }
+}

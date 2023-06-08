@@ -1,0 +1,74 @@
+:root {
+  --switchTextButton_width: 160px;
+  --switchTextButton_height: 40px;
+}
+.container_div {
+  position: relative;
+  overflow: hidden;
+  width: var(--switchTextButton_width);
+  height: var(--switchTextButton_height);
+}
+.container_div > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--switchTextButton_width);
+  height: var(--switchTextButton_width);
+}
+.display_div {
+  width: var(--switchTextButton_width);
+  height: var(--switchTextButton_height);
+  display: flex;
+  border-style: solid;
+  border-width: var(--mid-border-width);
+  border-color: var(--solid-border-color);
+  border-radius: calc(var(--switchTextButton_height) * 0.5);
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  z-index: -2;
+  animation: switchRight 0.5s forwards linear;
+}
+
+.container_div input[type="checkbox"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--switchTextButton_width);
+  height: var(--switchTextButton_width);
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.display_div > svg {
+  height: var(--switchTextButton_height);
+  width: var(--switchTextButton_width);
+}
+.display_div text {
+  transform: translateX(0%);
+  animation: switchRight 0.5s forwards linear;
+}
+input[type="checkbox"]:checked ~ .display_div text {
+  transform: translateX(55%);
+  animation: switchLeft 0.5s forwards linear;
+}
+input[type="checkbox"]:hover ~ .display_div {
+  border-width: var(--hover-mid-border-width);
+}
+
+@keyframes switchLeft {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(55%);
+  }
+}
+@keyframes switchRight {
+  from {
+    transform: translateX(55%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}

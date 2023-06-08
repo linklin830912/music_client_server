@@ -1,0 +1,53 @@
+:root {
+  --vertical-input-height: 120px;
+  --vertical-input-track-width: 6px;
+  --vertical-input_thumbWidth: 30px;
+  --vertical-input_thumbHeight: var(--vertical-input_thumbWidth);
+}
+.container_div {
+  position: relative;
+
+  height: 100%;
+  aspect-ratio: 1/1;
+}
+.vertical_input_track_div {
+  position: absolute;
+  width: var(--vertical-input-track-width);
+  height: var(--vertical-input-height);
+  left: 50%;
+  height: 100%;
+  background-color: var(--contrast-color);
+}
+.vertical_input {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: calc(
+    var(--vertical-input_thumbWidth) * 0.5 + var(--vertical-input-track-width) *
+      0.5
+  );
+  transform: rotate(90deg);
+}
+
+.vertical_input::-webkit-slider-thumb {
+  /* -webkit-appearance: "none";  this only work in global*/
+  cursor: "pointer";
+  border-color: var(--main-color);
+  background-color: var(--background-color);
+
+  width: var(--vertical-input_thumbWidth);
+  height: var(--vertical-input_thumbHeight);
+  border-radius: 50%;
+  box-sizing: "border-box";
+  border-width: 5px;
+  border-style: solid;
+}
+.vertical_input::-webkit-slider-thumb:hover {
+  border-width: 15px;
+}
+
+.vertical_text_input {
+  position: fixed;
+  width: 50px;
+  z-index: 2;
+}
