@@ -6,15 +6,15 @@ WORKDIR /app/backend
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
+
 # Install dependencies
-#RUN npm install  && echo "!!!installing"
+RUN npm install
 
 # Copy the source code to the container
-#COPY . .
+COPY . .
 
-#RUN npm run build && echo "!!!building"
 # Expose the port your backend server will run on (change if needed)
-#EXPOSE 4000
+EXPOSE 4000
 
 # Start the backend server
-#CMD [ "npm", "start" ]
+CMD [ "npm", "start" ]
