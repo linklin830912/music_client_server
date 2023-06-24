@@ -4,13 +4,15 @@ import { PokemonService } from "../services/pokemon.service";
 export class PokemonController {
   public router = Router();
 
-  constructor(private pokemonService: PokemonService) {
+  private pokemonService!: PokemonService;
+  constructor(pokemonService: PokemonService) {
     this.setRoutes();
+    this.pokemonService = pokemonService;
   }
 
   public setRoutes() {
     // Chaining our new post route
-    this.router.route("/").get(this.sayHello).post(this.add);
+    this.router.route("/").get(this.sayHello);
     this.router.route("/all").get(this.findAll);
     this.router.route("/:id").delete(this.delete).put(this.update);
   }

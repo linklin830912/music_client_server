@@ -1,4 +1,8 @@
-import app from "./app";
-import { PORT } from "./constants/app.constants";
+import { App } from "./App";
+import { Config } from "./Config";
 
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+const config = new Config();
+const app = new App({
+    dbUrl: config.DB_URL || "",
+    serverPort: config.SERVER_PORT || ""});
+app.startListening();

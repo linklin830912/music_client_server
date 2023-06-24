@@ -1,40 +1,59 @@
-import { MONGO_URL } from "./constants/app.constants";
 import { PokemonController } from "./controllers/pokemon.controller";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
 import { PokemonService } from "./services/pokemon.service";
+import { ThemeService } from "./services/theme/theme.service";
+import { ThemeController } from "./controllers/theme/theme.controller";
 
-class App {
-  public app: express.Application;
+type AppConfigType = {
+    dbUrl: string,
+    serverPort: string,
+}
+export class App {
+    public app: express.Application;
+    private dbUrl: string | undefined;
+    private serverPort: string | undefined;
 
-  constructor() {
-    this.app = express();
-    this.setConfig();
-    this.setMongoConfig();
-    this.setControllers();
+    constructor(config: AppConfigType) {
+        this.serverPort = config.serverPort;
+        this.dbUrl = config.dbUrl;
+
+        this.app = express();
+        this.initialize();
+        this.setDbConfig(this.dbUrl);
+        this.setControllers();
+    }
+  
+
+  public startListening() {
+    this.app.listen(this.serverPort, () => console.log(`Listening on port ${this.serverPort}`));
   }
 
-  private setConfig() {
+  private initialize() {
     this.app.use(bodyParser.json({ limit: "50mb" }));
     this.app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
     this.app.use(cors());
   }
 
-  private setMongoConfig() {
+  private setDbConfig(dbUrl: string) {
     mongoose.Promise = global.Promise;
-    mongoose.connect(MONGO_URL, {
+    mongoose.connect(dbUrl, {
     //   useNewUrlParser: true,
     });
   }
 
     private setControllers() {
-        const pokemonService = new PokemonService();
-    const pokemonController = new PokemonController(pokemonService);
+      const pokemonService = new PokemonService();
+      const pokemonController = new PokemonController(pokemonService);
 
-    this.app.use("/pokemon", pokemonController.router);
+      this.app.use("/pokemon", pokemonController.router);
+
+      const themeService = new ThemeService();
+      const themeController = new ThemeController(themeService);
+      this.app.use("/theme", themeController.router);
   }
 }
 
-export default new App().app;
+// export default new App(new Config()).app;
