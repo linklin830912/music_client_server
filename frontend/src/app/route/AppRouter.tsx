@@ -13,6 +13,7 @@ const AppRouter = () => {
       element: <MainPage />,
       errorElement: <ErrorPage />,
       children: [
+        
         {
           path: "login",
           element: <LoginPage />,

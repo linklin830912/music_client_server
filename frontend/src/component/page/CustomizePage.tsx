@@ -13,6 +13,8 @@ import {
   switchToDarkTheme,
   switchToLightTheme,
 } from "../../feature/theme/themeModeSlice";
+import { switchMode } from "../../feature/function/functionModeSlice";
+import { functionModeType } from "../../feature/function/functionModeType";
 
 type customizePageData = {
   isLoadingImageAnalysis: boolean;
@@ -36,7 +38,7 @@ const CustomizePage = () => {
     useAppSelector((state) => state.themeMode.colorPaletteString)
   );
   const dispatch = useDispatch();
-
+dispatch(switchMode({mode: functionModeType.Customize}))
   return (
     <>
       <FormProvider {...form}>

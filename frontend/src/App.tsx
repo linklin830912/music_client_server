@@ -14,6 +14,7 @@ import { Global } from "@emotion/react";
 import GlobalStyles from "./component/style/GlobalStyle";
 import { getColorPaletteClass } from "./model/color/colorPalette";
 import AppRouter from "./app/route/AppRouter";
+import { configRouter } from "./app/route/config";
 
 // Add your Realm App ID
 const graphqlUri = `https://asia-south1.gcp.realm.mongodb.com/api/client/v2.0/app/application-0-pnrdn/graphql`;

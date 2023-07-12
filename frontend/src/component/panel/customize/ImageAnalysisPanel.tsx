@@ -88,7 +88,6 @@ const ImageAnalysisPanel = (props: imageAnalysisPanelProps) => {
 
   return (
     <>
-      <button onClick={handleSubmit}>HERE!!!</button>
       <DropFileInput onImageDataLoaded={setFileOutput}>
         {props.children}
       </DropFileInput>
