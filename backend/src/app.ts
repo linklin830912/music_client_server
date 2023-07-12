@@ -1,9 +1,7 @@
-import { PokemonController } from "./controllers/pokemon.controller";
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import mongoose from "mongoose";
-import { PokemonService } from "./services/pokemon.service";
 import { ThemeService } from "./services/theme/theme.service";
 import { ThemeController } from "./controllers/theme/theme.controller";
 
@@ -45,10 +43,6 @@ export class App {
   }
 
     private setControllers() {
-      const pokemonService = new PokemonService();
-      const pokemonController = new PokemonController(pokemonService);
-
-      this.app.use("/pokemon", pokemonController.router);
 
       const themeService = new ThemeService();
       const themeController = new ThemeController(themeService);

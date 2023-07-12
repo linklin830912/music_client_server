@@ -11,12 +11,13 @@ type webPageFormatterProps = {
 };
 const WebPageFormatter = (props: webPageFormatterProps) => {
   const mode = useAppSelector((state) => state.functionMode.mode);
+  
   return (
     <>
       <div className={style.container_div}>
         <BackgroudLayer />
         <FunctionModeLayer />
-        {mode == functionModeType.Record && <RecordLayer />}
+        {mode === functionModeType.Record && <RecordLayer />}
 
         {props.children}
       </div>
